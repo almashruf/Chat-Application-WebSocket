@@ -3,13 +3,13 @@ const { check } = require("express-validator");
 
 const { getUsers } = require("../controller/usersController");
 const avatarUpload = require("../middlewares/users/avatarUpload");
-const { addUsersValidators } = require("../middlewares/users/userValidators");
+const { addUserValidators, addUserValidationHandler } = require("../middlewares/users/userValidators");
 
 const router = express.Router();
 
 //login page
 
 router.get("/", getUsers);
-router.post("/", avatarUpload, addUserValidators);
+router.post("/", avatarUpload, addUserValidators, addUserValidationHandler);
 
 module.exports = router;
