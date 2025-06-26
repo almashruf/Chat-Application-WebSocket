@@ -32,7 +32,12 @@ async function addUser(req,res,next){
             res.status(200).json({
                 message: "User added successfully",
             })
-        } catch(err){}
+        } catch(err){
+            console.error("Error adding user:", err);
+            res.status(500).json({
+                error: "Internal server error",
+            }); 
+        }
 }
 
 module.exports = {
